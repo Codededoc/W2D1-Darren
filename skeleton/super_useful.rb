@@ -23,12 +23,8 @@ def feed_me_a_fruit
     puts "Feed me a fruit! (Enter the name of a fruit:)"
     maybe_fruit = gets.chomp
     reaction(maybe_fruit)
-  rescue
-    if maybe_fruit == "coffee"
-      retry
-    else
-      raise StandardError
-    end
+  rescue StandardError
+    retry if maybe_fruit == "coffee"
   end
 end
 
