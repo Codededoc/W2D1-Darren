@@ -1,12 +1,16 @@
 # PHASE 2
 def convert_to_int(str)
-  Integer(str)
+  begin
+    num = Integer(str)
   rescue ArgumentError
-    nil
+    puts "Cannot convert to Interger. Please enter a numeric: "
+  ensure
+    num ||= nil
+  end
 end
 
 # PHASE 3
-FRUITS = ["apple", "banana", "orange"]
+FRUITS = ["apple", "banana", "orange"].freeze
 
 def reaction(maybe_fruit)
   if FRUITS.include?(maybe_fruit)
@@ -31,19 +35,12 @@ end
 # PHASE 4
 class BestFriend
   def initialize(name, yrs_known, fav_pastime)
+    raise ArgumentError.new("'name' cannot be blank") if name.empty?
+    raise ArgumentError.new("'yrs_known' must be greater than or equal to 5") if yrs_known.to_i < 5
+    raise ArgumentError.new("'fav_pasttime' cannot be blank") if fav_pastime.empty?
     @name = name
-      if @name.length <= 0
-        raise "We can't be besties if you don't have a name!"
-      end
     @yrs_known = yrs_known
-      if @yrs_known < 5
-        raise "1 year does not make us besties!"
-      end
     @fav_pastime = fav_pastime
-      if @fav_pastime.length <= 0
-        raise "We need to have a past-time if we want to do stuff together"
-      end
-
   end
 
   def talk_about_friendship
