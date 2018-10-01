@@ -36,11 +36,18 @@ end
 class BestFriend
   def initialize(name, yrs_known, fav_pastime)
     @name = name
+      if @name.length <= 0
+        raise "We can't be besties if you don't have a name!"
+      end
     @yrs_known = yrs_known
       if @yrs_known < 5
-        raise "1 year does not make us besties"
+        raise "1 year does not make us besties!"
       end
     @fav_pastime = fav_pastime
+      if @fav_pastime.length <= 0
+        raise "We need to have a past-time if we want to do stuff together"
+      end
+
   end
 
   def talk_about_friendship
