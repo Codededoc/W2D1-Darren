@@ -37,6 +37,9 @@ class BestFriend
   def initialize(name, yrs_known, fav_pastime)
     @name = name
     @yrs_known = yrs_known
+      if @yrs_known < 5
+        raise "1 year does not make us besties"
+      end
     @fav_pastime = fav_pastime
   end
 
