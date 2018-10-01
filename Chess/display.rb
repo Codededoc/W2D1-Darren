@@ -6,12 +6,13 @@ class Display
 
   def render
     @grid.each_with_index do |row, i1|
-      if [0, 2, 4, 6].include?(i1)
-        row.colorize(:blue)
+      if i1.even?
+        row.each { |cell, i2| cell.colorize(:blue) if i2.even? }
+        row.each { |cell, i2| cell.colorize(:red) if i2.odd? }
       else
-        row.colorize(:red)
+        row.each { |cell, i2| cell.colorize(:blue) if i2.odd? }
+        row.each { |cell, i2| cell.colorize(:red) if i2.even? }
       end
     end
   end
-
 end
